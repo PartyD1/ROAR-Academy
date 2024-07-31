@@ -1,10 +1,4 @@
-## This is course material for Introduction to Modern Artificial Intelligence
-## Example code: perceptron.py
-## Author: Allen Y. Yang,  Intelligent Racing Inc.
-##
-## (c) Copyright 2020. Intelligent Racing Inc. Not permitted for commercial use
 
-# Please make sure to conda install -c conda-forge keras
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
@@ -22,7 +16,7 @@ def toy_2D_samples(x_bias ,linearSeparableFlag):
 
         samples = np.concatenate((samples1, samples2 ), axis =0)
     
-        # Plot the data
+
         plt.plot(samples1[:, 0], samples1[:, 1], 'bo')
         plt.plot(samples2[:, 0], samples2[:, 1], 'rx')
         plt.show()
@@ -35,7 +29,7 @@ def toy_2D_samples(x_bias ,linearSeparableFlag):
 
         samples = np.concatenate((samples1, samples2, samples3, samples4 ), axis =0)
     
-        # Plot the data
+
         plt.plot(samples1[:, 0], samples1[:, 1], 'bo')
         plt.plot(samples2[:, 0], samples2[:, 1], 'bo')
         plt.plot(samples3[:, 0], samples3[:, 1], 'rx')
@@ -50,7 +44,7 @@ def toy_2D_samples(x_bias ,linearSeparableFlag):
 
 samples, labels = toy_2D_samples(x_bias ,linearSeparableFlag)
 
-# Split training and testing set
+
 
 randomOrder = np.random.permutation(200)
 trainingX = samples[randomOrder[0:100],:]
@@ -63,7 +57,7 @@ model.add(Dense(1, input_shape=(2,), activation='sigmoid', use_bias=False))
 model.compile(loss='mean_squared_error', optimizer='sgd', metrics=['binary_accuracy'])
 model.fit(trainingX, trainingY, epochs=100, batch_size=10, verbose=1, validation_split=0.2)
 
-# score = model.evaluate(testingX, testingY, verbose=0)
+
 score = 0
 for i in range(100):
     output = model.predict(np.array([testingX[i,:]]))
